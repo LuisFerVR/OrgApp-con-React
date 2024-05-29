@@ -7,13 +7,15 @@ const Formulario = () =>{
     const [nombre,actualizarNombre] = useState("");
     const [puesto,actualizarPuesto] = useState("");
     const [urlDeFoto,actualizarUrlDeFoto] = useState("");
+    const [equipo,actualizarEquipo]= useState("");
 
     const manejarEnvioDeFormulario = (event) => {{
         event.preventDefault();
         let _data = {
             nombre: nombre,
             puesto: puesto,
-            urlDeFoto : urlDeFoto
+            urlDeFoto : urlDeFoto,
+            equipo:equipo
         }
         console.log(_data);
     }}
@@ -24,7 +26,7 @@ const Formulario = () =>{
             <CampoTexto titulo="Nombre" placeholder="Ingresar nombre" required valor={nombre} actualizarValor={actualizarNombre}/>
             <CampoTexto titulo="Puesto" placeholder="Ingresar puesto" required valor={puesto} actualizarValor={actualizarPuesto}/>
             <CampoTexto titulo="Foto" placeholder="Ingresar url de su foto de perfil" required valor={urlDeFoto} actualizarValor={actualizarUrlDeFoto}/>
-            <ListaOpciones/>
+            <ListaOpciones equipo={equipo} actualizarEquipo={actualizarEquipo}/>
             <button type="submit">Crear Colaborador</button>
         </form>
     </section>
