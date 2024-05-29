@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      {mostrarFormulario && <Formulario/>}
+      {mostrarFormulario && <Formulario equipo={IListaDeOpciones.map((equipo)=>equipo.nombreEquipo)}/>}
       <MiOrg clickMostrarOcultarFormulario={clickMostrarOcultarFormulario}/>
       {
         IListaDeOpciones.map((equipo) => {

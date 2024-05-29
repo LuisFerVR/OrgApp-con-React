@@ -2,7 +2,7 @@ import { useState } from "react"
 import "./formulario.css"
 import CampoTexto from "../CampoTexto"
 import ListaOpciones from "../ListaDeOpciones"
-const Formulario = () =>{
+const Formulario = (props) =>{
 
     const [nombre,actualizarNombre] = useState("");
     const [puesto,actualizarPuesto] = useState("");
@@ -26,7 +26,7 @@ const Formulario = () =>{
             <CampoTexto titulo="Nombre" placeholder="Ingresar nombre" required valor={nombre} actualizarValor={actualizarNombre}/>
             <CampoTexto titulo="Puesto" placeholder="Ingresar puesto" required valor={puesto} actualizarValor={actualizarPuesto}/>
             <CampoTexto titulo="Foto" placeholder="Ingresar url de su foto de perfil" required valor={urlDeFoto} actualizarValor={actualizarUrlDeFoto}/>
-            <ListaOpciones equipo={equipo} actualizarEquipo={actualizarEquipo}/>
+            <ListaOpciones equipo={equipo} actualizarEquipo={actualizarEquipo} equipos={props.equipo}/>
             <button type="submit">Crear Colaborador</button>
         </form>
     </section>
