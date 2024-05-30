@@ -11,13 +11,13 @@ const Formulario = (props) =>{
 
     const manejarEnvioDeFormulario = (event) => {{
         event.preventDefault();
-        let _data = {
+        let data = {
             nombre: nombre,
             puesto: puesto,
             urlDeFoto : urlDeFoto,
             equipo:equipo
         }
-        console.log(_data);
+        props.registrarColaborador(data);
     }}
 
     return <section className="formulario">

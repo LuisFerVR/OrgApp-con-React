@@ -8,7 +8,7 @@ import Equipo from './componentes/Equipo';
 
 function App() {
   const [mostrarFormulario,actualizarMostrar] = useState(false);
-
+  const [colaboradores,actualizarColaboradores] = useState([]);
   //Se crea una funicón que se mandará como promps para el evento onClick
   //y esta mandará a llamar la función que actualiza el estado,
   //que es actualizarMostrar en este caso  y lo que hará es negar o cambiar el valor inicial
@@ -46,13 +46,22 @@ function App() {
       colorS:"#FFEEDF"
     }
 ]
+  const registrarColaborador = (colaborador) => {
+    console.log("nuevo colaborador :", colaborador);
+    /* spread operator: Crea una copia de los valores actuales y luego simplemente agrega el colaborador
+      Se realiza poniendo corchetes en sus parámetros a la función de actualizar un estado y entre ellos tres puntos 
+    */
+    actualizarColaboradores([...colaboradores,colaborador]);
+  }
 
   // Ternario --> condicion ?  si es verdadero : si es falso
   //Corto circuito --> condición && haz Esto
   return (
     <div className="App">
       <Header/>
-      {mostrarFormulario && <Formulario equipo={IListaDeOpciones.map((equipo)=>equipo.nombreEquipo)}/>}
+      {mostrarFormulario && <Formulario equipo={IListaDeOpciones.map((equipo)=>equipo.nombreEquipo)} 
+                              registrarColaborador={registrarColaborador}
+                            />}
       <MiOrg clickMostrarOcultarFormulario={clickMostrarOcultarFormulario}/>
       {
         IListaDeOpciones.map((equipo) => {
