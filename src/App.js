@@ -65,7 +65,7 @@ function App() {
       <MiOrg clickMostrarOcultarFormulario={clickMostrarOcultarFormulario}/>
       {
         IListaDeOpciones.map((equipo) => {
-          return <Equipo key={equipo.nombreEquipo} datos={equipo}/>
+          return <Equipo key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores}/>
         })
       }
     </div>

@@ -5,7 +5,7 @@ import Colaborador from "../Colaborador/index";
 const Equipo = (props) => {
     //Destructuración:
     const { colorP, colorS, nombreEquipo} = props.datos;
-
+    const {colaboradores} = props
     const colorSubrayado = {
         borderColor: colorP
     }
@@ -13,8 +13,7 @@ const Equipo = (props) => {
     return <section className="Equipo" style={{backgroundColor:colorS}}>
         <h3 style={colorSubrayado}>{nombreEquipo}</h3>
         <div className="colaboradores">
-            <Colaborador/>
-            <Colaborador/>
+            {colaboradores.map((colaborador,index)=><Colaborador datos={colaborador} key={index}/>)}
         </div>
     </section>
 }
