@@ -10,12 +10,16 @@ const Equipo = (props) => {
         borderColor: colorP
     }
     
-    return <section className="Equipo" style={{backgroundColor:colorS}}>
-        <h3 style={colorSubrayado}>{nombreEquipo}</h3>
-        <div className="colaboradores">
-            {colaboradores.map((colaborador,index)=><Colaborador datos={colaborador} key={index}/>)}
-        </div>
-    </section>
+    return <>{
+        colaboradores.length > 0 &&
+        <section className="Equipo" style={{backgroundColor:colorS}}>
+            <h3 style={colorSubrayado}>{nombreEquipo}</h3>
+            <div className="colaboradores">
+                {colaboradores.map((colaborador,index)=><Colaborador datos={colaborador} key={index} colorP={colorP}/>)}
+            </div>
+        </section>
+    }</>
+    
 }
 
 export default Equipo

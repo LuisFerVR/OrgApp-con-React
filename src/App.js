@@ -5,6 +5,7 @@ import Header from "./componentes/Header/header";
 import Formulario from './componentes/Formulario/formulario';
 import MiOrg from './componentes/MiOrg';
 import Equipo from './componentes/Equipo';
+import Footer from './componentes/Footer/footer';
 
 function App() {
   const [mostrarFormulario,actualizarMostrar] = useState(false);
@@ -65,9 +66,10 @@ function App() {
       <MiOrg clickMostrarOcultarFormulario={clickMostrarOcultarFormulario}/>
       {
         IListaDeOpciones.map((equipo) => {
-          return <Equipo key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores}/>
+          return <Equipo key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores.filter(colaborador=>colaborador.equipo === equipo.nombreEquipo)}/>
         })
       }
+      <Footer/>
     </div>
   );
 }
