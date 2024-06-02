@@ -9,15 +9,38 @@ import Footer from './componentes/Footer/footer';
 
 function App() {
   const [mostrarFormulario,actualizarMostrar] = useState(false);
-  const [colaboradores,actualizarColaboradores] = useState([]);
-  //Se crea una funicón que se mandará como promps para el evento onClick
-  //y esta mandará a llamar la función que actualiza el estado,
-  //que es actualizarMostrar en este caso  y lo que hará es negar o cambiar el valor inicial
-  const clickMostrarOcultarFormulario = () =>{
-    actualizarMostrar(!mostrarFormulario);
-  }
+  const [colaboradores,actualizarColaboradores] = useState([{
+    equipo: "Front-end",
+    urlDeFoto: "https://github.com/harlandlohora.png",
+    nombre: "Harland Lohora",
+    puesto: "Instructor"
+  },
+  {
+    equipo: "Programación",
+    urlDeFoto: "https://tse2.mm.bing.net/th?id=OIP.oqc1VdskT3cZyutzb7-_BAHaEK&pid=Api&P=0&h=180",
+    nombre: "Genesys Rondón",
+    puesto: "Desarrolladora de software e instructora"
+  },
+  {
+    equipo: "UX y UI",
+    urlDeFoto: "https://github.com/JeanmarieAluraLatam.png",
+    nombre: "Jeanmarie Quijada",
+    puesto: "Instructora en Alura Latam"
+  },
+  {
+    equipo: "Programación",
+    urlDeFoto: "https://github.com/christianpva.png",
+    nombre: "Christian Velasco",
+    puesto: "Head de Alura e Instructor"
+  },
+  {
+    equipo: "Innovación y Gestión",
+    urlDeFoto: "https://github.com/JoseDarioGonzalezCha.png",
+    nombre: "Jose Gonzalez",
+    puesto: "Dev FullStack"
+  }]);
 
-  const IListaDeOpciones =[
+  const [IListaDeOpciones,actualizarEquipo] = useState([
     {nombreEquipo:"Programación",
       colorP:"#57C278",
       colorS:"#D9F7E9"
@@ -46,7 +69,31 @@ function App() {
       colorP:"#FF8A29",
       colorS:"#FFEEDF"
     }
-]
+  ]);
+
+  //Se crea una funicón que se mandará como promps para el evento onClick
+  //y esta mandará a llamar la función que actualiza el estado,
+  //que es actualizarMostrar en este caso  y lo que hará es negar o cambiar el valor inicial
+  const clickMostrarOcultarFormulario = () =>{
+    actualizarMostrar(!mostrarFormulario);
+  }
+
+  //Eliminar colaborador
+  const eliminarColaborador = (colaboradorAEliminar) =>{
+
+  }
+
+  //Actualizar el color de los equipos
+  const fnActualizarColorEquipos = (color,nombreDelEquipo) =>{ 
+    const equiposActualizados = IListaDeOpciones.map((equipo)=>{
+      if(equipo.nombreEquipo === nombreDelEquipo){
+        equipo.colorP=color;
+      }
+      return equipo;
+    })
+    actualizarEquipo(equiposActualizados);
+  }
+
   const registrarColaborador = (colaborador) => {
     console.log("nuevo colaborador :", colaborador);
     /* spread operator: Crea una copia de los valores actuales y luego simplemente agrega el colaborador
@@ -66,7 +113,7 @@ function App() {
       <MiOrg clickMostrarOcultarFormulario={clickMostrarOcultarFormulario}/>
       {
         IListaDeOpciones.map((equipo) => {
-          return <Equipo key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores.filter(colaborador=>colaborador.equipo === equipo.nombreEquipo)}/>
+          return <Equipo fnActualizarColorEquipos={fnActualizarColorEquipos} eliminarColaborador={eliminarColaborador} key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores.filter(colaborador=>colaborador.equipo === equipo.nombreEquipo)}/>
         })
       }
       <Footer/>

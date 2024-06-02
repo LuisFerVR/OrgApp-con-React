@@ -1,10 +1,11 @@
 import "./colaborador.css"
-
+import { IoCloseCircle } from "react-icons/io5";
 const Colaborador = (props) => {
 
     const {nombre,puesto,equipo,urlDeFoto}=props.datos;
-    const {colorP}=props;
+    const {colorP,eliminarColaborador}=props;
     return <div className="colaborador">
+        <IoCloseCircle className="eliminar"/>
         <div className="encabezado" style={{backgroundColor:colorP}}>
             <img src={urlDeFoto} alt={nombre}/>
         </div>
