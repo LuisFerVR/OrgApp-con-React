@@ -2,10 +2,10 @@ import "./colaborador.css"
 import { IoCloseCircle } from "react-icons/io5";
 const Colaborador = (props) => {
 
-    const {nombre,puesto,equipo,urlDeFoto}=props.datos;
+    const {nombre,puesto,equipo,urlDeFoto,id}=props.datos;
     const {colorP,eliminarColaborador}=props;
     return <div className="colaborador">
-        <IoCloseCircle className="eliminar"/>
+        <IoCloseCircle className="eliminar" onClick={(()=>eliminarColaborador(id))}/>
         <div className="encabezado" style={{backgroundColor:colorP}}>
             <img src={urlDeFoto} alt={nombre}/>
         </div>
