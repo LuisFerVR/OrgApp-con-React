@@ -6,7 +6,7 @@ import hexToRgba from 'hex-to-rgba';
 const Equipo = (props) => {
     //Destructuración:
     const { colorP, colorS, nombreEquipo, id} = props.datos;
-    const {colaboradores, eliminarColaborador, fnActualizarColorEquipos} = props
+    const {colaboradores, eliminarColaborador, fnActualizarColorEquipos, like} = props
     const colorSubrayado = {
         borderColor: colorP
     }
@@ -19,7 +19,7 @@ const Equipo = (props) => {
             }}/>
             <h3 style={colorSubrayado}>{nombreEquipo}</h3>
             <div className="colaboradores">
-                {colaboradores.map((colaborador,index)=><Colaborador eliminarColaborador={eliminarColaborador} datos={colaborador} key={index} colorP={colorP}/>)}
+                {colaboradores.map((colaborador,index)=><Colaborador like={like} eliminarColaborador={eliminarColaborador} datos={colaborador} key={index} colorP={colorP}/>)}
             </div>
         </section>
     }</>

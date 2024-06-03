@@ -15,35 +15,40 @@ function App() {
     equipo: "Front-end",
     urlDeFoto: "https://github.com/harlandlohora.png",
     nombre: "Harland Lohora",
-    puesto: "Instructor"
+    puesto: "Instructor",
+    fav:true
   },
   {
     id: uuid(),
     equipo: "Programación",
     urlDeFoto: "https://tse2.mm.bing.net/th?id=OIP.oqc1VdskT3cZyutzb7-_BAHaEK&pid=Api&P=0&h=180",
     nombre: "Genesys Rondón",
-    puesto: "Desarrolladora de software e instructora"
+    puesto: "Desarrolladora de software e instructora",
+    fav:false
   },
   {
     id: uuid(),
     equipo: "UX y UI",
     urlDeFoto: "https://github.com/JeanmarieAluraLatam.png",
     nombre: "Jeanmarie Quijada",
-    puesto: "Instructora en Alura Latam"
+    puesto: "Instructora en Alura Latam",
+    fav:false
   },
   {
     id: uuid(),
     equipo: "Programación",
     urlDeFoto: "https://github.com/christianpva.png",
     nombre: "Christian Velasco",
-    puesto: "Head de Alura e Instructor"
+    puesto: "Head de Alura e Instructor",
+    fav:false
   },
   {
     id: uuid(),
     equipo: "Innovación y Gestión",
     urlDeFoto: "https://github.com/JoseDarioGonzalezCha.png",
     nombre: "Jose Gonzalez",
-    puesto: "Dev FullStack"
+    puesto: "Dev FullStack",
+    fav:false
   }]);
 
   const [IListaDeOpciones,actualizarEquipo] = useState([
@@ -128,6 +133,17 @@ function App() {
     actualizarEquipo( [...IListaDeOpciones,{ nuevoEquipo,id:uuid() } ] )
   }
 
+  const like = (id) => {
+    console.log('like',id);
+    const actualizarColaboradoresFav=colaboradores.map((colaborador)=>{
+      if (colaborador.id==id) {
+        colaborador.fav= !colaborador.fav
+      }
+      return colaborador
+    })
+    actualizarColaboradores(actualizarColaboradoresFav);
+  }
+
   // Ternario --> condicion ?  si es verdadero : si es falso
   //Corto circuito --> condición && haz Esto
   return (
@@ -139,7 +155,7 @@ function App() {
       <MiOrg clickMostrarOcultarFormulario={clickMostrarOcultarFormulario}/>
       {
         IListaDeOpciones.map((equipo) => {
-          return <Equipo fnActualizarColorEquipos={fnActualizarColorEquipos} eliminarColaborador={eliminarColaborador} key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores.filter(colaborador=>colaborador.equipo === equipo.nombreEquipo)}/>
+          return <Equipo like={like} fnActualizarColorEquipos={fnActualizarColorEquipos} eliminarColaborador={eliminarColaborador} key={equipo.nombreEquipo} datos={equipo} colaboradores={colaboradores.filter(colaborador=>colaborador.equipo === equipo.nombreEquipo)}/>
         })
       }
       <Footer/>
